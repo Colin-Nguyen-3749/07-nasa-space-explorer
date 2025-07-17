@@ -108,6 +108,8 @@ button:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 /* Three columns on wider screens */
@@ -141,4 +143,155 @@ button:hover {
 .placeholder-icon {
   font-size: 48px;
   margin-bottom: 20px;
+}
+
+/* Add hover effect to gallery items */
+.gallery-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Modal styles - overlay window that appears on top of everything */
+.modal {
+  /* Hide the modal by default */
+  display: none;
+  
+  /* Position it as a fixed overlay covering the entire screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Dark semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.8);
+  
+  /* Add blur effect to the background */
+  backdrop-filter: blur(5px);
+  
+  /* Make sure modal appears above everything else */
+  z-index: 1000;
+  
+  /* Center the modal content */
+  justify-content: center;
+  align-items: center;
+  
+  /* Smooth transition when modal appears */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the modal when it has the 'show' class */
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* The actual modal window content */
+.modal-content {
+  /* White background for the modal window */
+  background-color: white;
+  
+  /* Rounded corners to match the app style */
+  border-radius: 10px;
+  
+  /* Padding inside the modal */
+  padding: 20px;
+  
+  /* Maximum width so it doesn't get too wide on large screens */
+  max-width: 800px;
+  
+  /* Maximum height with scrolling if content is too tall */
+  max-height: 90vh;
+  overflow-y: auto;
+  
+  /* Responsive width */
+  width: 90%;
+  
+  /* Position relative so we can position the close button */
+  position: relative;
+  
+  /* Shadow to make it stand out */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button (X) in the top right corner */
+.close-button {
+  /* Position in top right corner */
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  
+  /* Make it look like a button */
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+  
+  /* No background or border */
+  background: none;
+  border: none;
+  
+  /* Smooth color transition on hover */
+  transition: color 0.2s ease;
+}
+
+/* Change color when hovering over close button */
+.close-button:hover {
+  color: #000;
+}
+
+/* The large image in the modal */
+#modalImage {
+  /* Make image responsive */
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  
+  /* Rounded corners */
+  border-radius: 8px;
+  
+  /* Space below the image */
+  margin-bottom: 15px;
+}
+
+/* Modal information section */
+.modal-info {
+  /* Space above the text */
+  margin-top: 10px;
+}
+
+/* Modal title styling */
+#modalTitle {
+  /* Larger font for the title */
+  font-size: 1.5em;
+  font-weight: bold;
+  
+  /* Space below title */
+  margin-bottom: 10px;
+  
+  /* Dark color */
+  color: #333;
+}
+
+/* Modal date styling */
+.modal-date {
+  /* Smaller, lighter text for the date */
+  font-size: 0.9em;
+  color: #666;
+  
+  /* Space below date */
+  margin-bottom: 15px;
+  
+  /* Make it italic */
+  font-style: italic;
+}
+
+/* Modal explanation text */
+.modal-explanation {
+  /* Normal paragraph styling */
+  line-height: 1.6;
+  color: #444;
+  
+  /* No margin at bottom */
+  margin-bottom: 0;
 }

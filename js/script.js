@@ -12,6 +12,14 @@ setupDateInputs(startInput, endInput);
 const getImagesBtn = document.getElementById('getImagesBtn');
 const gallery = document.getElementById('gallery');
 
+// Find modal elements
+const modal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalDate = document.getElementById('modalDate');
+const modalExplanation = document.getElementById('modalExplanation');
+const closeButton = document.querySelector('.close-button');
+
 // NASA APOD API key (demo key allows 30 requests per hour)
 const NASA_API_KEY = 'jh5WYQXLMNkrNftDJ4fSzkKTaeQAdyNLpcwofk82';
 const NASA_API_BASE_URL = 'https://api.nasa.gov/planetary/apod';
@@ -99,6 +107,11 @@ function displayImages(images) {
         </div>
       `;
       
+      // Add click event listener to open modal when gallery item is clicked
+      galleryItem.addEventListener('click', function() {
+        openModal(item);
+      });
+      
       // Add the gallery item to the gallery container
       gallery.appendChild(galleryItem);
     }
@@ -112,5 +125,45 @@ function displayImages(images) {
       </div>
     `;
   }
-};
+}
+
+// Function to open the modal with image details
+function openModal(imageData) {
+  // Set the modal image source and alt text
+  modalImage.src = imageData.url;
+  modalImage.alt = imageData.title;
+  
+  // Set the modal text content
+  modalTitle.textContent = imageData.title;
+  modalDate.textContent = imageData.date;
+  modalExplanation.textContent = imageData.explanation;
+  
+  // Show the modal by adding the 'show' class
+  modal.classList.add('show');
+}
+
+// Function to close the modal
+function closeModal() {
+  // Hide the modal by removing the 'show' class
+  modal.classList.remove('show');
+}
+
+// Add event listener to close button
+closeButton.addEventListener('click', closeModal);
+
+// Add event listener to close modal when clicking outside the modal content
+modal.addEventListener('click', function(event) {
+  // Check if the click was on the modal background (not the content)
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+// Add event listener to close modal when pressing Escape key
+document.addEventListener('keydown', function(event) {
+  // Check if Escape key was pressed and modal is open
+  if (event.key === 'Escape' && modal.classList.contains('show')) {
+    closeModal();
+  }
+});
 

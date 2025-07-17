@@ -90,15 +90,15 @@ function displayImages(images) {
     return;
   }
   
-  // Loop through each image from NASA API
+  // Loop through each item from NASA API (can be image or video)
   images.forEach(function(item) {
     // Create a new div element for each gallery item
     const galleryItem = document.createElement('div');
     galleryItem.className = 'gallery-item';
     
-    // Only show actual images (skip videos for simplicity)
+    // Handle different media types
     if (item.media_type === 'image') {
-      // Use template literal to create the HTML for each gallery item
+      // Create gallery item for images
       galleryItem.innerHTML = `
         <img src="${item.url}" alt="${item.title}" />
         <div class="item-info">
@@ -112,31 +112,83 @@ function displayImages(images) {
         openModal(item);
       });
       
-      // Add the gallery item to the gallery container
-      gallery.appendChild(galleryItem);
+    } else if (item.media_type === 'video') {
+      // Create gallery item for videos with a placeholder and link
+      galleryItem.innerHTML = `
+        <div class="video-placeholder">
+          <div class="video-icon">🎬</div>
+          <div class="video-text">
+            <p>Video Content</p>
+            <a href="${item.url}" target="_blank" class="video-link">Watch Video</a>
+          </div>
+        </div>
+        <div class="item-info">
+          <h3>${item.title}</h3>
+          <p class="date">${item.date}</p>
+        </div>
+      `;
+      
+      // Add click event listener to open modal for video content too
+      galleryItem.addEventListener('click', function(event) {
+        // Don't open modal if user clicked the video link
+        if (event.target.classList.contains('video-link')) {
+          return;
+        }
+        openModal(item);
+      });
     }
+    
+    // Add the gallery item to the gallery container
+    gallery.appendChild(galleryItem);
   });
   
-  // If no images were found (only videos), show a message
+  // Show message if no items were processed
   if (gallery.children.length === 0) {
     gallery.innerHTML = `
       <div class="no-results">
-        <p>No images found for this date range (only videos available).</p>
+        <p>No content found for this date range.</p>
       </div>
     `;
   }
 }
 
-// Function to open the modal with image details
-function openModal(imageData) {
-  // Set the modal image source and alt text
-  modalImage.src = imageData.url;
-  modalImage.alt = imageData.title;
+// Function to open the modal with image or video details
+function openModal(itemData) {
+  // Set the modal text content (works for both images and videos)
+  modalTitle.textContent = itemData.title;
+  modalDate.textContent = itemData.date;
+  modalExplanation.textContent = itemData.explanation;
   
-  // Set the modal text content
-  modalTitle.textContent = imageData.title;
-  modalDate.textContent = imageData.date;
-  modalExplanation.textContent = imageData.explanation;
+  // Handle different media types in the modal
+  if (itemData.media_type === 'image') {
+    // For images, show the image
+    modalImage.src = itemData.url;
+    modalImage.alt = itemData.title;
+    modalImage.style.display = 'block';
+    
+  } else if (itemData.media_type === 'video') {
+    // For videos, hide the image and show a video placeholder
+    modalImage.style.display = 'none';
+    
+    // Create a video placeholder in the modal if it doesn't exist
+    let videoPlaceholder = document.getElementById('modalVideoPlaceholder');
+    if (!videoPlaceholder) {
+      videoPlaceholder = document.createElement('div');
+      videoPlaceholder.id = 'modalVideoPlaceholder';
+      videoPlaceholder.className = 'modal-video-placeholder';
+      // Insert before the modal-info div
+      const modalInfo = document.querySelector('.modal-info');
+      modalInfo.parentNode.insertBefore(videoPlaceholder, modalInfo);
+    }
+    
+    // Set the video placeholder content
+    videoPlaceholder.innerHTML = `
+      <div class="modal-video-icon">🎬</div>
+      <p>This is a video from NASA's archives</p>
+      <a href="${itemData.url}" target="_blank" class="modal-video-link">Watch Video</a>
+    `;
+    videoPlaceholder.style.display = 'block';
+  }
   
   // Show the modal by adding the 'show' class
   modal.classList.add('show');

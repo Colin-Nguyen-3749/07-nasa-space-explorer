@@ -124,11 +124,53 @@ button:hover {
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+  /* Add more space below the image */
+  margin-bottom: 15px;
+}
+
+/* Add styling for the item info container */
+.item-info {
+  /* Center align all text in the info section */
+  text-align: center;
+  
+  /* Add padding around the text */
+  padding: 10px;
+}
+
+/* Style the title (h3) in gallery items */
+.gallery-item h3 {
+  /* Remove default margin */
+  margin: 0;
+  
+  /* Add space below the title */
+  margin-bottom: 8px;
+  
+  /* Make the title stand out */
+  font-weight: bold;
+  color: #333;
+  
+  /* Set font size for the title */
+  font-size: 16px;
+}
+
+/* Style the date paragraph in gallery items */
+.gallery-item .date {
+  /* Remove default margin and padding */
+  margin: 0;
+  padding: 0;
+  
+  /* Make the date text smaller and lighter */
+  font-size: 14px;
+  color: #666;
+  
+  /* Add italic style to the date */
+  font-style: italic;
 }
 
 .gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
+  /* Remove the old styling that's now handled by specific classes */
+  margin-top: 0;
+  padding: 0;
   font-size: 14px;
 }
 
@@ -309,4 +351,98 @@ button:hover {
   
   /* No margin at bottom */
   margin-bottom: 0;
+}
+
+/* Video placeholder styling for gallery items */
+.video-placeholder {
+  /* Same size as image thumbnails */
+  width: 100%;
+  height: 200px;
+  
+  /* Center the content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  /* Light background to distinguish from images */
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  
+  /* Add margin like images */
+  margin-bottom: 15px;
+  
+  /* Add border for visual separation */
+  border: 2px dashed #ddd;
+}
+
+/* Video icon in gallery */
+.video-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+/* Video text container */
+.video-text {
+  text-align: center;
+}
+
+/* Video text styling */
+.video-text p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Video link styling in gallery */
+.video-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+/* Video link hover effect */
+.video-link:hover {
+  background-color: #0056b3;
+}
+
+/* Modal video placeholder styling */
+.modal-video-placeholder {
+  /* Same styling as gallery video placeholder */
+  display: none;
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 2px dashed #ddd;
+}
+
+/* Modal video icon */
+.modal-video-icon {
+  font-size: 64px;
+  margin-bottom: 15px;
+}
+
+/* Modal video link */
+.modal-video-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+/* Modal video link hover effect */
+.modal-video-link:hover {
+  background-color: #0056b3;
 }

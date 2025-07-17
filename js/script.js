@@ -161,13 +161,19 @@ function openModal(itemData) {
   
   // Handle different media types in the modal
   if (itemData.media_type === 'image') {
-    // For images, show the image
+    // For images, show the image and hide video placeholder
     modalImage.src = itemData.url;
     modalImage.alt = itemData.title;
     modalImage.style.display = 'block';
     
+    // Hide video placeholder if it exists
+    const videoPlaceholder = document.getElementById('modalVideoPlaceholder');
+    if (videoPlaceholder) {
+      videoPlaceholder.style.display = 'none';
+    }
+    
   } else if (itemData.media_type === 'video') {
-    // For videos, hide the image and show a video placeholder
+    // For videos, hide the image and show embedded video
     modalImage.style.display = 'none';
     
     // Create a video placeholder in the modal if it doesn't exist
@@ -181,11 +187,22 @@ function openModal(itemData) {
       modalInfo.parentNode.insertBefore(videoPlaceholder, modalInfo);
     }
     
-    // Set the video placeholder content
+    // Check if video has a thumbnail, if not use a default icon
+    const thumbnailHTML = itemData.thumbnail_url 
+      ? `<img src="${itemData.thumbnail_url}" alt="${itemData.title} thumbnail" class="video-thumbnail" />`
+      : `<div class="modal-video-icon">🎬</div>`;
+    
+    // Set the video placeholder content with thumbnail and embedded iframe
     videoPlaceholder.innerHTML = `
-      <div class="modal-video-icon">🎬</div>
-      <p>This is a video from NASA's archives</p>
-      <a href="${itemData.url}" target="_blank" class="modal-video-link">Watch Video</a>
+      ${thumbnailHTML}
+      <div class="video-embed-container">
+        <iframe src="${itemData.url}" 
+                frameborder="0" 
+                allowfullscreen
+                title="${itemData.title}">
+        </iframe>
+      </div>
+      <p class="video-caption">Video from NASA's archives</p>
     `;
     videoPlaceholder.style.display = 'block';
   }

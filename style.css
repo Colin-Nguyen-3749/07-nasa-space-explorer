@@ -416,11 +416,61 @@ button:hover {
   /* Same styling as gallery video placeholder */
   display: none;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
   background-color: #f8f9fa;
   border-radius: 8px;
   margin-bottom: 15px;
   border: 2px dashed #ddd;
+}
+
+/* Video thumbnail styling in modal */
+.video-thumbnail {
+  /* Make thumbnail responsive but not too large */
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  
+  /* Add some space below the thumbnail */
+  margin-bottom: 20px;
+  
+  /* Round the corners */
+  border-radius: 8px;
+  
+  /* Add a subtle shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Video embed container for responsive video */
+.video-embed-container {
+  /* Make the video responsive */
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  margin-bottom: 15px;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Style the iframe to fill the container */
+.video-embed-container iframe {
+  /* Position the iframe to fill the container */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Video caption styling */
+.video-caption {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  font-style: italic;
 }
 
 /* Modal video icon */

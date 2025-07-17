@@ -69,9 +69,14 @@ button {
   background-color: #aeb0b5;
   color: black;
   cursor: pointer;
+  /* Add transition for smooth hover effect */
+  transition: all 0.3s ease;
 }
 button:hover {
   background-color: #5b616b;
+  /* Add more pronounced hover effects */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Stack horizontally on wider screens */
@@ -109,7 +114,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  /* Make transition longer and smoother */
+  transition: all 0.3s ease;
 }
 
 /* Three columns on wider screens */
@@ -189,7 +195,12 @@ button:hover {
 
 /* Add hover effect to gallery items */
 .gallery-item:hover {
-  transform: translateY(-2px);
+  /* Lift the item higher */
+  transform: translateY(-8px);
+  /* Add a stronger shadow */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  /* Slightly scale up the item */
+  transform: translateY(-8px) scale(1.02);
 }
 
 /* Modal styles - overlay window that appears on top of everything */
@@ -403,12 +414,15 @@ button:hover {
   text-decoration: none;
   border-radius: 4px;
   font-size: 14px;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 /* Video link hover effect */
 .video-link:hover {
   background-color: #0056b3;
+  /* Add more pronounced hover effects */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }
 
 /* Modal video placeholder styling */
@@ -489,12 +503,15 @@ button:hover {
   border-radius: 4px;
   font-size: 16px;
   margin-top: 10px;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 /* Modal video link hover effect */
 .modal-video-link:hover {
   background-color: #0056b3;
+  /* Add more pronounced hover effects */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }
 
 /* Space Facts Section */
@@ -503,7 +520,7 @@ button:hover {
   text-align: center;
   
   /* Add space around the section */
-  margin: 30px 0;
+  margin: 20px 0;
   
   /* Add padding */
   padding: 20px;
@@ -564,10 +581,13 @@ button:hover {
   cursor: pointer;
   
   /* Add transition for smooth hover effect */
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 /* New fact button hover effect */
 #newFactBtn:hover {
   background-color: #0056b3;
+  /* Add more pronounced hover effects */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }

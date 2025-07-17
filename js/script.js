@@ -12,6 +12,10 @@ setupDateInputs(startInput, endInput);
 const getImagesBtn = document.getElementById('getImagesBtn');
 const gallery = document.getElementById('gallery');
 
+// Find space facts elements
+const spaceFactText = document.getElementById('spaceFact');
+const newFactBtn = document.getElementById('newFactBtn');
+
 // Find modal elements
 const modal = document.getElementById('imageModal');
 const modalImage = document.getElementById('modalImage');
@@ -235,4 +239,44 @@ document.addEventListener('keydown', function(event) {
     closeModal();
   }
 });
+
+// Array of interesting space facts for students
+const spaceFacts = [
+  "The Sun is so big that about 1.3 million Earths could fit inside it!",
+  "A day on Venus is longer than its year! It takes 243 Earth days to rotate once.",
+  "Jupiter has more than 80 moons, and some of them have oceans under their icy surfaces.",
+  "The footprints on the Moon will last millions of years because there's no wind to blow them away.",
+  "Saturn's rings are made mostly of ice and rock particles, some as small as dust and others as big as houses.",
+  "One teaspoon of neutron star material would weigh about 6 billion tons on Earth!",
+  "The International Space Station travels at 17,500 mph and orbits Earth every 90 minutes.",
+  "Mars has the largest volcano in our solar system - Olympus Mons is three times taller than Mount Everest!",
+  "The Milky Way galaxy contains between 100-400 billion stars.",
+  "Light from the Sun takes 8 minutes and 20 seconds to reach Earth.",
+  "Mercury has no atmosphere, so its temperatures can range from 800°F to -300°F.",
+  "The Great Red Spot on Jupiter is a storm that has been raging for at least 400 years.",
+  "Pluto takes 248 Earth years to orbit the Sun once.",
+  "The Moon is slowly moving away from Earth at about 1.5 inches per year.",
+  "A black hole is a region of space where gravity is so strong that nothing, not even light, can escape."
+];
+
+// Function to display a random space fact
+function displayRandomFact() {
+  // Get a random number between 0 and the length of the facts array
+  const randomIndex = Math.floor(Math.random() * spaceFacts.length);
+  
+  // Get the fact at that random index
+  const randomFact = spaceFacts[randomIndex];
+  
+  // Display the fact in the space fact element
+  spaceFactText.textContent = randomFact;
+}
+
+// Add click event listener to the "Get New Fact" button
+newFactBtn.addEventListener('click', function() {
+  // Call the function to display a random fact
+  displayRandomFact();
+});
+
+// Show a random fact when the page loads
+displayRandomFact();
 

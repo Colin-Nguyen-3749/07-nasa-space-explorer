@@ -66,12 +66,12 @@ button {
 
 /* Button specific */
 button {
-  background-color: #d3d3d3;
+  background-color: #aeb0b5;
   color: black;
   cursor: pointer;
 }
 button:hover {
-  background-color: #bfbfbf;
+  background-color: #5b616b;
 }
 
 /* Stack horizontally on wider screens */
@@ -161,7 +161,7 @@ button:hover {
   
   /* Make the date text smaller and lighter */
   font-size: 14px;
-  color: #666;
+  color: #323a45;
   
   /* Add italic style to the date */
   font-style: italic;
@@ -179,7 +179,7 @@ button:hover {
   flex: 1 1 100%;
   text-align: center;
   padding: 40px;
-  color: #666;
+  color: #323a45;
 }
 
 .placeholder-icon {
@@ -334,7 +334,7 @@ button:hover {
 .modal-date {
   /* Smaller, lighter text for the date */
   font-size: 0.9em;
-  color: #666;
+  color: #323a45;
   
   /* Space below date */
   margin-bottom: 15px;
@@ -494,5 +494,80 @@ button:hover {
 
 /* Modal video link hover effect */
 .modal-video-link:hover {
+  background-color: #0056b3;
+}
+
+/* Space Facts Section */
+.space-facts {
+  /* Center the section */
+  text-align: center;
+  
+  /* Add space around the section */
+  margin: 30px 0;
+  
+  /* Add padding */
+  padding: 20px;
+  
+  /* Light background to make it stand out */
+  background-color: white;
+  
+  /* Round the corners */
+  border-radius: 8px;
+  
+  /* Add a subtle shadow */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Space facts heading */
+.space-facts h2 {
+  /* Make the heading look nice */
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 15px;
+  
+  /* Use the same font as other headings */
+  font-family: 'Inter', sans-serif;
+}
+
+/* Fact container */
+.fact-container {
+  /* Center align the content */
+  text-align: center;
+}
+
+/* The actual space fact text */
+#spaceFact {
+  /* Make the text readable */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+  
+  /* Add space around the fact */
+  margin-bottom: 15px;
+  
+  /* Make it stand out a bit */
+  font-style: italic;
+  
+  /* Add some padding */
+  padding: 10px;
+}
+
+/* New fact button */
+#newFactBtn {
+  /* Make it look like other buttons but different color */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  
+  /* Add transition for smooth hover effect */
+  transition: background-color 0.2s ease;
+}
+
+/* New fact button hover effect */
+#newFactBtn:hover {
   background-color: #0056b3;
 }
